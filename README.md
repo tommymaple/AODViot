@@ -1,2 +1,2 @@
 # AODViot
-a NEW AODV portocol to face to Iot network .CopyLeft NothingRights.
+a NEW AODV potocol to face to Iot network .CopyLeft NothingRights.
