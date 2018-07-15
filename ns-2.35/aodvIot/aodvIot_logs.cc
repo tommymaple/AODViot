@@ -1,6 +1,4 @@
-/* AODViot v1.3.0.1 2018/JUY/10 */
-/*DiLiver Unicorn 2018 CopyLeft NothingRights. */
-/*Ver1.3 Master Graduate Vertion 2018/JUY/07 */
+/*DiLiver Unicorn 2018*/
 
 #include <aodvIot/aodvIot.h>
 #include <aodvIot/aodvIot_packet.h>

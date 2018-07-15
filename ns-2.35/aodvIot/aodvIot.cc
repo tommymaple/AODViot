@@ -1,6 +1,4 @@
-/* AODViot v1.3.0.1 2018/JUY/10 */
-/*DiLiver Unicorn 2018 CopyLeft NothingRights. */
-/*Ver1.3 Master Graduate Vertion 2018/JUY/07 */
+/*DiLiver Unicorn 2018*/
 
 #include <aodvIot/aodvIot.h>
 #include <aodvIot/aodvIot_packet.h>
@@ -218,7 +216,7 @@ void IotRREQreBroadcastTimer::handle( Event* p ) {//2018 X Rosh
 	//before i rebroadcast check route table again.
 	if ( rt->rt_flags > 0 )// if route is available now.
 	{	
-		
+		return;
 		//路由防呆
 		
 		//check IF this RREQ I'm the Originator
@@ -228,6 +226,7 @@ void IotRREQreBroadcastTimer::handle( Event* p ) {//2018 X Rosh
 		if( rt->rt_nexthop == rt0->rt_nexthop )//同路進出( 我就是多餘的節點 )
 			return;
 
+		/*
 		if( ( rt0->rt_flags <= 0 ) || ( rt0->rt_flags == RTF_RREP_WAITING ) )
 		{
 			agent->sendReply( 	rq->rq_Org_IP,
@@ -238,6 +237,7 @@ void IotRREQreBroadcastTimer::handle( Event* p ) {//2018 X Rosh
 								rq->rq_timestamp );
 			return;
 		}
+		*/
 	}
 
 	if ( rt->rt_flags == RTF_BROADCASTING )
@@ -697,7 +697,7 @@ void AODViot::recvRequest( Packet *p ) {
 
 	  /* Cache the RREQ ID ( broadcast ID )*/
 	  id_insert( rq->rq_Org_IP, rq->rq_RREQ_ID );//orginator need cache its own ID too ,at RREQ send before.( RFC )
-	#endif
+#endif
 
 
 	///I'm the Originator
@@ -834,7 +834,7 @@ void AODViot::recvRequest( Packet *p ) {
 
 	/** Flag process & Send phase **/
 		if( ( rt->rt_flags > 0 ) &&
-			( rt->rt_seqno >= rq->rq_Dst_seqno ) &&
+			( rt->rt_seqno > rq->rq_Dst_seqno ) &&
 			( !rq->rq_RREQ_D ) ) {
 			
 			assert( rq->rq_Dst_IP == rt->rt_dst );
@@ -1023,11 +1023,12 @@ printf( "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n" );
 		}
 		
 		// If the rt is up, forward. flag value bigger then 0 means route is available.
-		if( rt0->rt_flags > 0 ) {
+		if( rt0 && 
+			rt0->rt_flags > 0 ) {
 			if( RouteTableUpdate || ( rt0->rt_flags == RTF_RREP_WAITING ) ) {
 				//這邊+RTF_RREP_WAITING這個條件可以讓ACK bypass forward 規則
 				
-				assert ( rt0->rt_flags > 0 );
+				
 				rp->rp_hop_count += 1;
 				rp->rp_Prev_Hop_IP = index;
 				

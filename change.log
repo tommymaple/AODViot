@@ -1,3 +1,7 @@
+AODViot v1.3.0.2 :
+1.trace change : the format "[[0x1 "(RREQ for exmaple) in AWK will returns ERR ,because "[[",so i change it to "[0x1"
+
+
 AODViot v1.3.0.1 bug-fixes:
 
 1.  Fix cmu-trace.cc AODViot-RREQ RREQ ID off .tr file print null cause wrong spot.

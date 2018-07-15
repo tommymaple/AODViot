@@ -1,6 +1,4 @@
-/* AODViot v1.3.0.1 2018/JUY/10 */
-/*DiLiver Unicorn 2018 CopyLeft NothingRights. */
-/*Ver1.3 Master Graduate Vertion 2018/JUY/07 */
+/*DiLiver Unicorn 2018*/
 
 #ifndef __aodvIot_packet_h__
 #define __aodvIot_packet_h__
@@ -66,8 +64,10 @@ struct hdr_aodvIot_request {
     //rq_timestamp is not include in packet
 
 #ifdef RREQ_ID
+	#define RREQ_ID_PRINT 1
   sz = 6*sizeof( u_int32_t );
 #else
+	#define RREQ_ID_PRINT 0
   sz = 5*sizeof( u_int32_t );
 #endif
 

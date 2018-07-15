@@ -998,9 +998,7 @@ CMUTrace::format_aodvIot(Packet *p, int offset)
 			}
 			else
 			{
-				#ifdef RREQ_ID
-					RREQ_ID_PRINT 1
-				#endif
+				
 				if (newtrace_)
 				{
 					sprintf(pt_->buffer() + offset,
@@ -1019,7 +1017,7 @@ CMUTrace::format_aodvIot(Packet *p, int offset)
 				else
 				{
 					sprintf(pt_->buffer() + offset,
-						"[[0x%x| %s| %s| %d| %d| %d| %d] %d %d %d %d |%d] (REQUEST)",
+						"[0x%x %s %s %d %d %d %d] %d %d %d %d %d] (REQUEST)",
 						rq->rq_type,
 						"X",//rq->rq_RREQ_J
 						"X",//rq->rq_RREQ_R
@@ -1072,7 +1070,7 @@ CMUTrace::format_aodvIot(Packet *p, int offset)
 				else
 				{
 					sprintf(pt_->buffer() + offset,
-						"[[0x%x| %s| %d| %d] %d %d %d %f] (REPLY)",
+						"[0x%x %s %d %d] %d %d %d %f] (REPLY)",
 						rp->rp_type,
 						"X",//rp->rp_RREP_R,
 						rp->rp_RREP_A,
@@ -1116,7 +1114,7 @@ CMUTrace::format_aodvIot(Packet *p, int offset)
 				else
 				{
 					sprintf(pt_->buffer() + offset,
-						"[[0x%x| %s| %d] %d %d] (ERROR)",
+						"[0x%x %s %d] %d %d] (ERROR)",
 						re->re_type,
 						"X",//re->re_RERR_N,
 						re->re_DestCount,
@@ -1149,7 +1147,7 @@ CMUTrace::format_aodvIot(Packet *p, int offset)
 				else
 				{
 					sprintf(pt_->buffer() + offset,
-						"[[0x%x] %d] (REPLY_ACK)",
+						"[0x%x %d] (REPLY_ACK)",
 						ra->rpack_type,
 						ra->rpack_Org_IP);
 				}

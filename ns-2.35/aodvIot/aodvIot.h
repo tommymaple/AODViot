@@ -1,6 +1,4 @@
-/* AODViot v1.3.0.1 2018/JUY/10 */
-/*DiLiver Unicorn 2018 CopyLeft NothingRights. */
-/*Ver1.3 Master Graduate Vertion 2018/JUY/07 */
+/*DiLiver Unicorn 2018*/
 
 #ifndef __aodvIot_h__
 #define __aodvIot_h__
@@ -107,8 +105,8 @@ class AODViot;
 #define RREP_ACK_WAIT_TIME 0.1
 #define RREP_ACK_RETRIES 3
 
-#define RREQ_REBROADCAST_INTERVAL 0.09
-#define RREQ_REBROADCAST_RETRIES 3
+#define RREQ_REBROADCAST_INTERVAL 0.08
+#define RREQ_REBROADCAST_RETRIES 6
 
 // No. of times to do network-wide search before timing out for
 // MAX_RREQ_TIMEOUT sec.
