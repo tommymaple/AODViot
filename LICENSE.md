@@ -1,1 +1,1 @@
-CopyLeft NothingRights. DiLiver Unicorn 2018
+CopyLeft NothingRights. diLiverUnicorn 2021
